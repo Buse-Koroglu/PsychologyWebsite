@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hakkımızda</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/> 
+    <link rel="shortcut icon" href="/img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/about.css">
+    <script src="js/about.js" defer></script>
+    </head>
+<body>
+    <nav class="navbar">
+        <div class="logo"><img src="/img/logo.png" alt="" width="70" height="70">
+        <h2 class="logo-yazisi">his'</h2>
+        </div>
+
+        <div class="nav-links">
+            <ul>
+                <li><a href="/">Anasayfa</a></li>
+                <li><a href="/tests">Psikolojik Testler</a></li>
+                <li><a href="/print">Blog</a></li>
+                <li><a href="/about">Hakkımızda</a></li>
+
+                
+            </ul>
+        </div>
+
+        <ul class="icons">
+    <script>
+fetch('/session-user')
+  .then(res => res.json())
+  .then(data => {
+    const navbar = document.querySelector('.icons');
+
+    const dynamicItems = navbar.querySelectorAll('.dynamic');
+    dynamicItems.forEach(item => item.remove());
+
+    if(data.user){ // kullanıcı girili ise
+      const liLogout = document.createElement('li');
+      liLogout.classList.add('dynamic');
+      liLogout.innerHTML = `<a href="/logout"><i class="ri-logout-box-line"></i></a>`;
+      navbar.appendChild(liLogout);
+    } else { // kullnaıcı girili değilse login butonu eklenecek
+      const liLogin = document.createElement('li');
+      liLogin.classList.add('dynamic');
+      liLogin.innerHTML = `<a href="/login"><i class="ri-login-box-line"></i></a>`;
+      navbar.appendChild(liLogin);
+    }
+  });
+
+        </script>
+
+            <li><button class="theme" onclick="toggleTheme()"><i class="ri-contrast-line"></i></button></li> 
+            <li><a target="_blank" href="https://www.instagram.com/busee.krglu/"><i class="ri-instagram-line"></i> </a> </li>
+            <li><a target="_blank" href="mailto:buse.krgl20@gmail.com"><i class="ri-mail-line"></i></a></li>
+            <li><a target="_blank" href="https://www.linkedin.com/in/buse-k%C3%B6ro%C4%9Flu-7426a6284?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="ri-linkedin-box-line"></i></a></li>
+           
+        </ul>  
+        
+        <button class="menu" onclick="menuBar()"><i class="ri-menu-line"></i></button>
+
+ </nav> 
+
+ 
+
+        <main>
+
+             
+        <div id="menu" class="iconCollapse">
+            <ul class="icons">
+            <li><a href="/register"><i class="ri-user-add-line"></i> Kayıt Ol</a></li>     
+            <li><a href="/login"><i class="ri-login-box-line"></i> Giriş Yap</a></li>               
+            <li><button class="theme" onclick="toggleTheme()"><i class="ri-contrast-line"></i> Tema</button></li> 
+            <li><a target="_blank" href="https://www.instagram.com/busee.krglu/"><i class="ri-instagram-line"></i> Instagram </a></li>
+            <li><a target="_blank" href="mailto:buse.krgl20@gmail.com"><i class="ri-mail-line"></i> Email</a></li>
+            <li><a target="_blank" href="https://www.linkedin.com/in/buse-k%C3%B6ro%C4%9Flu-7426a6284?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="ri-linkedin-box-line"></i> Linkedin</a></li> 
+          </ul> </div>
+
+            <div class="giris">
+                <img src="/img/aboutme.png" class="meImg" alt="" width="840px" > 
+                <div class="desc1">
+                    <h2>Ben Kimim?</h2>
+                    <p class="bas-metin">Herkese merhaba, ben Buse.</p>
+                    <p>Öncelikle bu siteyi kurma amacımdan kısaca bahsetmek istiyorum. Ben bilgisayar mühendisliği okuyan ve aynı zamanda psikolojiye ilgi duyan biriyim. 
+                    Meraklı olduğum bu iki alanı bir noktada buluşturmak istedim. Bu yüzden hem psikolojik testlerin yer aldığı, zamanla yenilerinin ekleneceği 
+                    hem de üyelerin blog sayfasında kendi düşüncelerini ve hislerini paylaşabileceği bir alan tasarladım. Ayrıca sitede kayıt yapmadan da diğer üyelerin yazdıklarını okumanız ise mümkün.
+                    Amacım hem öğrenmek hem de paylaşmak isteyenler için samimi ve faydalı bir ortam oluşturmaktı. Umarım siz de burada keyifli vakit geçirebilirsiniz :) </p>
+                </div>
+            </div>
+
+            <div class="mid">
+                <div class="desc2">
+                    <h2>Neden His?</h2>
+                    <p> Siteme "His" adını vermemin özel bir anlamı var ve bunu sizlerle paylaşmak istiyorum. “His” kelimesi, bu sitenin temel yapı taşlarından biri. Aynı zamanda bir açılımı da bulunuyor:  "Heart Intimus Sentire" . Bu ifade, İngilizce ve Latince kelimelerden oluşuyor ve kalbin en derinlerinden hissetmek anlamına geliyor. Bu mottoyu daha önce hiç kimsenin kullanmadığını fark ettim ve sitem için en doğru, anlamlı ifadeyi kendim oluşturdum.
+                        Daha önce kullanılmamış bir motto olsa da ben bu söze bayıldım ve düşündüm ki, “HİS” hem bu açılımıyla hem de tek başına güçlü bir anlam taşımalı.
+                        Diğer yandan, Türkçedeki “hissetmek” eyleminin kökü olarak, duygularımızı ve iç dünyamızı en yalın haliyle ifade ediyor.
+                        İşte bu nedenle “His”, hem açılımı hem de kendi başına anlamı ile bu siteyi en iyi şekilde yansıtan sembol oldu.
+
+</p>
+                </div>
+
+                <img src="/img/his.jpg"  class="hisImg" width="840px" >
+            </div>
+            
+
+        </main>
+        
+
+
+
+</body>
+
+</html>

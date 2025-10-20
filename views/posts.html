@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gönderiler</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/> 
+    <link rel="shortcut icon" href="/img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/posts.css">
+    <script src="js/posts.js"></script>
+</head>
+<body>
+
+
+     <nav class="navbar">
+        <div class="logo"><img src="/img/logo.png" alt="" width="70" height="70">
+        <h2>his'</h2>
+        </div>
+
+        <div class="nav-links">
+            <ul>
+                <li><a href="/">Anasayfa</a></li>
+                <li><a href="/tests">Psikolojik Testler</a></li>
+                <li><a href="/print">Blog</a></li>
+                <li><a href="/about">Hakkımızda</a></li>
+
+                
+            </ul>
+        </div>
+
+        <ul class="icons">
+
+           <button class="theme" onclick="toggleTheme()"><i class="ri-contrast-line"></i></button> 
+            <a target="_blank" href="https://www.instagram.com/busee.krglu/"><i class="ri-instagram-line"></i> </a> 
+            <a target="_blank" href="mailto:buse.krgl20@gmail.com"><i class="ri-mail-line"></i></a>
+            <a target="_blank" href="https://www.linkedin.com/in/buse-k%C3%B6ro%C4%9Flu-7426a6284?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="ri-linkedin-box-line"></i></a>
+           
+        </ul> 
+        
+         <button class="menu" onclick="menuBar()"><i class="ri-menu-line"></i></button>
+        
+ </nav> 
+   
+ <main>
+
+     <div id="menu" class="iconCollapse">
+            <ul class="icons">
+            <li><a href="/register"><i class="ri-user-add-line"></i> Kayıt Ol</a></li>     
+            <li><a href="/login"><i class="ri-login-box-line"></i> Giriş Yap</a></li>               
+            <li><button class="theme" onclick="toggleTheme()"><i class="ri-contrast-line"></i> Tema</button></li> 
+            <li><a target="_blank" href="https://www.instagram.com/busee.krglu/"><i class="ri-instagram-line"></i> Instagram </a></li>
+            <li><a target="_blank" href="mailto:buse.krgl20@gmail.com"><i class="ri-mail-line"></i> Email</a></li>
+            <li><a target="_blank" href="https://www.linkedin.com/in/buse-k%C3%B6ro%C4%9Flu-7426a6284?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="ri-linkedin-box-line"></i> Linkedin</a></li> 
+          </ul> </div>
+
+
+
+      <div class="baslik">
+        <h1>Üyelerimizin Paylaştığı Gönderiler</h1>
+       </div>
+
+        <div id="posts"></div>
+
+
+ </main>
+
+      <script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    // Navbar kullanıcı kontrolü
+    fetch('/session-user')
+      .then(res => res.json())
+      .then(data => {
+        const navbar = document.querySelector('.icons');
+        navbar.querySelectorAll('.dynamic').forEach(item => item.remove());
+
+        if(data.user){ 
+            const liLogout = document.createElement('li');
+            liLogout.classList.add('dynamic');
+            liLogout.innerHTML = `<a href="/logout"><i class="ri-logout-box-line"></i></a>`;
+            navbar.appendChild(liLogout);
+        } else {
+            const liLogin = document.createElement('li');
+            liLogin.classList.add('dynamic');
+            liLogin.innerHTML = `<a href="/login"><i class="ri-login-box-line"></i></a>`;
+            navbar.appendChild(liLogin);
+        }
+    });
+
+    // Postları yükleme
+    async function showPosts() {
+        try{
+            const res = await fetch('/api/posts');
+            const text = await res.text();
+
+            if (text.startsWith('<!DOCTYPE')) {
+                console.error("JSON gelmedi ve HTML sayfası döndü.");
+                return;
+            }
+
+            const postsData = JSON.parse(text);
+
+            const postContainer = document.getElementById('posts');
+            if(!postContainer) {
+                console.error("#posts elementi bulunamadı!");
+                return;
+            }
+
+            postContainer.innerHTML = '';
+
+            postsData.forEach(post => {
+                const div = document.createElement("div");
+                div.classList.add("post");
+
+                div.innerHTML = `
+                    <h3>${post.title}</h3>
+                    <br> <br>
+                    <p>${post.content}</p>
+                    <br>
+                    <h4>Yazar: ${post.username} | ${new Date(post.created_at).toLocaleString()}</h4>
+                `;
+                postContainer.appendChild(div);
+            });
+
+        } catch (err) {
+            console.error("Postlar yüklenemedi", err);
+        }
+    }
+
+    showPosts();
+
+});
+</script> 
+
+
+    
+</body>
+</html>

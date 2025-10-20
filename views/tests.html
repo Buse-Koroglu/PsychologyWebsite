@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psikoljik Testler</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/> 
+    <link rel="shortcut icon" href="/img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/tests.css">
+    <script src="js/tests.js"></script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo"><img src="/img/logo.png" alt="" width="70" height="70">
+        <h2>his'</h2>
+        </div>
+
+        <div class="nav-links">
+            <ul>
+                <li><a href="/">Anasayfa</a></li>
+                <li><a href="/tests">Psikolojik Testler</a></li>
+                <li><a href="/print">Blog</a></li>
+                <li><a href="/about">Hakkımızda</a></li>
+
+                
+            </ul>
+        </div>
+
+        <ul class="icons">
+     <script>
+fetch('/session-user')
+  .then(res => res.json())
+  .then(data => {
+    const navbar = document.querySelector('.icons');
+
+    const dynamicItems = navbar.querySelectorAll('.dynamic');
+    dynamicItems.forEach(item => item.remove());
+
+    if(data.user){ // kullanıcı girili ise
+      const liLogout = document.createElement('li');
+      liLogout.classList.add('dynamic');
+      liLogout.innerHTML = `<a href="/logout"><i class="ri-logout-box-line"></i></a>`;
+      navbar.appendChild(liLogout);
+    } else { // kullnaıcı girili değilse login butonu eklenecek
+      const liLogin = document.createElement('li');
+      liLogin.classList.add('dynamic');
+      liLogin.innerHTML = `<a href="/login"><i class="ri-login-box-line"></i></a>`;
+      navbar.appendChild(liLogin);
+    }
+  });
+
+        </script>
+           <button class="theme" onclick="toggleTheme()"><i class="ri-contrast-line"></i></button> 
+            <a target="_blank" href="https://www.instagram.com/busee.krglu/"><i class="ri-instagram-line"></i> </a> 
+            <a target="_blank" href="mailto:buse.krgl20@gmail.com"><i class="ri-mail-line"></i></a>
+            <a target="_blank" href="https://www.linkedin.com/in/buse-k%C3%B6ro%C4%9Flu-7426a6284?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="ri-linkedin-box-line"></i></a>
+           
+        </ul> 
+        
+         <button class="menu" onclick="menuBar()"><i class="ri-menu-line"></i></button>
+        
+ </nav> 
+
+ <main>
+
+          
+        <div id="menu" class="iconCollapse">
+            <ul class="icons">
+            <li><a href="/register"><i class="ri-user-add-line"></i> Kayıt Ol</a></li>     
+            <li><a href="/login"><i class="ri-login-box-line"></i> Giriş Yap</a></li>               
+            <li><button class="theme" onclick="toggleTheme()"><i class="ri-contrast-line"></i> Tema</button></li> 
+            <li><a target="_blank" href="https://www.instagram.com/busee.krglu/"><i class="ri-instagram-line"></i> Instagram </a></li>
+            <li><a target="_blank" href="mailto:buse.krgl20@gmail.com"><i class="ri-mail-line"></i> Email</a></li>
+            <li><a target="_blank" href="https://www.linkedin.com/in/buse-k%C3%B6ro%C4%9Flu-7426a6284?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="ri-linkedin-box-line"></i> Linkedin</a></li> 
+          </ul> </div>
+
+     <div class="test-container">
+
+           <div class="test-1">
+            <img class="hug" src="/img/hug.png" alt="">
+            <h3>Bağlanma Stili Testi</h3>
+            <button class="t1-start"><a href="/attachment">Teste Başla</a></button>
+           </div> 
+
+           <div class="test-2">
+            <img class="okb" src="/img/okb.png" alt="">
+            <h3>OKB-Takıntı Testi</h3>
+            <button class="t2-start"><a href="/okb">Teste Başla</a></button>
+           </div>
+           
+           <div class="test-3">
+            <img class="anxiety" src="/img/anxiety.png" alt="">
+            <h3>Anksiyete Testi</h3>
+            <button class="t3-start"><a href="/anxiety">Teste Başla</a></button>
+           </div>
+           
+
+          <div class="test-4">
+            <img class="eq" src="/img/eq.png" alt="">
+            <h3>Duygusal Zeka Testi</h3>
+            <button class="t4-start"><a href="/eq">Teste Başla</a></button>
+           </div>
+
+        </div>
+
+ </main>
+    
+</body>
+</html>
